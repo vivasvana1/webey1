@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Schemes</title>
+    <script>
+        async function applyForScheme() {
+            const schemeName = document.getElementById('scheme_name').value;
+
+            const response = await fetch('/apply/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `scheme_name=${schemeName}&user_id=12345`
+            });
+
+            const data = await response.json();
+            alert(data.message);
+        }
+    </script>
+</head>
+<body>
+    <h1>Apply for a Scheme</h1>
+    <input type="text" id="scheme_name" placeholder="Enter Scheme Name" />
+    <button onclick="applyForScheme()">Apply</button>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scheme Recommendation</title>
+    <script>
+        async function getRecommendations() {
+            const response = await fetch('/recommend/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ income: 15000, family_size: 4, location: 'Delhi' })
+            });
+            const data = await response.json();
+            alert('Recommended Schemes: ' + data.recommended_schemes.join(', '));
+        }
+    </script>
+</head>
+<body>
+    <h1>Get Recommendations</h1>
+    <button onclick="getRecommendations()">Fetch Recommendations</button>
+</body>
+</html>

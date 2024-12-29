@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Documents</title>
+    <script>
+        async function uploadDocument() {
+            const formData = new FormData();
+            const fileInput = document.getElementById('document');
+            formData.append('file', fileInput.files[0]);
+
+            const response = await fetch('/verify-document/', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            alert('Document Verification Status: ' + data.status);
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Your Document</h1>
+    <input type="file" id="document" />
+    <button onclick="uploadDocument()">Upload</button>
+</body>
+</html>
